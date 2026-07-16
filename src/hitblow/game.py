@@ -28,6 +28,12 @@ def play(digits=3):
             print(f"{digits} 桁の数字で入力してね")
             continue
         tries += 1
+        if tries == 5:
+            # 5回目の入力時に、自作したhintモジュールから関数をインポートして実行
+            from .hint import get_sum_hint
+            
+            secret_sum = get_sum_hint(secret)
+            print(f"💡 [5回目ヒント] 答えの3つの数字をすべて足すと 【 {secret_sum} 】 です！")
         hit, blow = judge(secret, guess)
         print(f"  Hit={hit}  Blow={blow}")
         if hit == digits:
