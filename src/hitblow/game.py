@@ -64,6 +64,10 @@ def play(digits=3):
             print(f"{digits} 桁の数字で入力してね")
             continue
         tries += 1
+        # --- ゲームオーバー判定（挑戦回数7回） ---
+        from .gameover import check_game_over
+        if check_game_over(tries):
+            break
 
         if tries == 5:
             # 5回目の入力時に、自作したhintモジュールから関数をインポートして実行
